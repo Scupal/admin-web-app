@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    
+}
+
+.container{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+table{
+    padding: 2rem;
+    border: 1px solid #ccc;
+    margin-bottom: 2rem;
+}
+
+table thead th{
+    padding: 10px 20px;
+    background-color: rgb(172, 213, 255);
+    
+}
+
+table tbody td{
+    padding: 10px 20px;
+}
+
+main{
+    margin-top: 3rem;
+}

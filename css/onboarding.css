@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    background-color: #f6f5ff;
+}
+
+.container{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo{
+    height: 10vh;
+    border-radius: 20px;
+    animation: 5s kekye alternate forwards;
+}
+
+@keyframes kekye {
+    0%{
+        transform: translateY(-60px);
+    }
+    50%{
+        transform: translateY(-30px);
+    }
+    100%{
+        transform: translateY(15px);
+    }
+}
+
+.container form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.container form input{
+    padding: 8px 25px;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline-color: dodgerblue;
+}
+
+.academic-form{
+    transition: 1s;
+}
+
+#academic-container{
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.cont-btn{
+    background: transparent;
+    border: none;
+    color: dodgerblue;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.send-btn{
+    background-color: dodgerblue;
+    color: white;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}

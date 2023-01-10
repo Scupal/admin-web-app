@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Structure</title>
+    <link rel="stylesheet" href="../css/fee-structure.css">
+</head>
+<body>
+    
+    <div class="container">
+        <br>
+        <a href="fees.html" style="text-decoration: none;">
+            <div style="display: flex; gap: 20px;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" style="height: 20px">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+              </svg>
+              <p>Go Back</p>
+            </div>
+        </a>
+        <br>
+        <img src="" alt="flag" style="height: 15vh; border-radius: 10px;" id="school-logo">
+        <h3 id="school-name"></h3>
+        <div style="display: flex; gap: 20px; margin-top: 20px; margin-bottom: 20px;">
+            <p id="school-address" style="border-right: 1px solid #ccc; padding-right: 20px;"></p>
+            <p id="school-contact"></p>
+        </div>
+        <h2>Fee Structure</h2>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Amount</th>
+                    <th>Class</th>
+                </tr>
+            </thead>
+            <tbody class="table-body">
+
+            </tbody>
+        </table>
+        <br>
+        <p class="total" style="font-weight: 900; font-size: 20px;"></p>
+        <br>
+        <button onclick="window.print()" style="background-color: dodgerblue; color: white;
+        padding: 10px 20px; border: none; border-radius: 5px; margin-top: 0px;
+        cursor: pointer;">Print Fee Strucutre</button>
+    </div>
+
+
+    <script src="../js/fee-structure.js" type="module"></script>
+</body>
+</html>
