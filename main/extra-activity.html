@@ -4,16 +4,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Boxicons -->
+	<!-- Boxicons --> 
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="../css/general-noticeboard.css">
-
-	<title>Scuppal Classes</title>
+	<link rel="stylesheet" href="../css/activity.css">
+	<title>Scuppal Extra Activities</title>
 </head>
 <body>
-
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
@@ -53,13 +51,13 @@
 					<span class="text">Grades</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="extra-activity.html" style="display: flex; gap: 10px;">
 					<i class='bx bx-dumbbell' ></i>
 					<span class="text">Extra Activities</span>
 				</a>
 			</li>
-			<li class="active">
+			<li>
 				<a href="class.html" style="display: flex; gap: 10px;">
 					<i class='bx bx-building-house' ></i>
 					<span class="text">Classes</span>
@@ -126,13 +124,12 @@
 	<!-- SIDEBAR -->
 
 
-
 	<!-- CONTENT -->
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<form action="#" style="opacity: 0;">
+			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
@@ -140,29 +137,28 @@
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification" style="opacity: 0;">
+			<!-- <a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<!-- <img src="img/people.png"> -->
-			</a>
+				<img src="img/people.png">
+			</a> -->
 		</nav>
 		<!-- NAVBAR -->
-		
 
 		<!-- MAIN -->
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Classes</h1>
+					<h1>Extra Activities</h1>
 					<ul class="breadcrumb">
 						<li>
 							<a href="#">Home</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="#">Classes</a>
+							<a class="active" href="#">Extra Activities</a>
 						</li>
 					</ul>
 				</div>
@@ -171,49 +167,49 @@
 					<span class="text">Download PDF</span>
 				</a> -->
 			</div>
-
-			<div class="teachers-box">
+			
+			<div class="activity-box">
 				<p style="float: right; cursor: pointer;" class="close-btn">X</p>
 				<br><br>
-				<h2>Add a class</h2>
+				<h2>Add New Activity</h2>
 				<br>
-				<form class="note-form">
-					<input type="text" placeholder="Class Name" name="class-name"/>  
-					<input type="text" placeholder="Class Size" name="class-size"/> 
-					<input type="submit" value="Add Class" style="background-color: dodgerblue; padding: 10px 20px;
+				<form class="t-form a-form">
+					<input type="text" placeholder="Name" name="name">
+					<input type="text" placeholder="Amount" name="amount">
+					</select>
+					<input type="submit" value="Add Activity" style="background-color: dodgerblue; padding: 10px 20px;
 					color: white; border: none; border-radius: 5px; cursor: pointer;"/>  
 				</form>
 			</div>
 
-			<a href="#" class="add-notice-btn" style="background-color: dodgerblue; color: white; display: flex; gap: 8px;
+			<a href="#" class="add-activity-btn" style="background-color: dodgerblue; color: white; display: flex; gap: 8px;
 			padding: 8px 20px; width: 200px; margin-top: 20px; border-radius: 5px;" >
 				<p>+</p>
-				<span>Add New Class</span>
+				<span class="text">Add Extra Service</span>
 			</a>
-
 			<ul class="box-info">
 				<li>
-					<i class='bx bxs-calendar-check' ></i>
+					<i class='bx bx-dumbbell' ></i>
 					<span class="text">
-						<h3 id="notices"></h3>
-						<p>Classes</p>
+						<h3 id="num-activities"></h3>
+						<p>Extra Activities</p>
 					</span>
 				</li>
 			</ul>
 
+
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Classes Available</h3>
+						<h3>Activity List</h3>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
-					<table>
+					<table id="myTable"">
 						<thead>
 							<tr>
-								<th>Date Created</th>
-								<th>Name</th>
-								<th>Size</th>
+								<th>Activity Name</th>
+								<th>Price</th>
 							</tr>
 						</thead>
 						<tbody id="table-body">
@@ -221,17 +217,21 @@
 						</tbody>
 					</table>
 				</div>
-			</div>
+				
 		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
 	
+	
+	
 	<script
 	src="https://code.jquery.com/jquery-3.6.3.min.js"
 	integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
 	crossorigin="anonymous"></script>
-	<script src="../js/class.js" type="module"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script src="../js/activities.js" type="module"></script>
 	<script src="script.js"></script>
 </body>
 </html>

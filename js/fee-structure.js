@@ -13,7 +13,7 @@ let { data, error } = await supabase
   .eq("class_id",1)
   // .eq("school_id", 2)
 
-console.log(data)
+
 console.log(error)
 
 const tableBody = document.querySelector('.table-body');

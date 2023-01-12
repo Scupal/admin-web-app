@@ -2,7 +2,7 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 // import { createClient } from '@supabase/supabase-js';
 
 // Create a single supabase client for interacting with your database
-const supabase = createClient('http://109.74.192.221:8000', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICAgInJvbGUiOiAiYW5vbiIsCiAgICAiaXNzIjogInN1cGFiYXNlIiwKICAgICJpYXQiOiAxNjcyMjcyMDAwLAogICAgImV4cCI6IDE4MzAwMzg0MDAKfQ.KY_w-s7ZPYvUjdKPFv2mFyXRccXH0NIEEyn-4_dWFV4');
+const supabase = createClient('http://109.74.192.221:8000', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICAgInJvbGUiOiAic2VydmljZV9yb2xlIiwKICAgICJpc3MiOiAic3VwYWJhc2UiLAogICAgImlhdCI6IDE2NzIyNzIwMDAsCiAgICAiZXhwIjogMTgzMDAzODQwMAp9.ZVCUygy7EwO9z0QJy73nt7vxXLWSyahq_ot6dcZtgJM');
 
 // Sellect all Students
 let { data: teachers, error } = await supabase
@@ -24,8 +24,6 @@ for (var i in teachers){
                     <td style='padding: 20px;'>${teachers[i].address}</td>
                     <td style='padding: 20px;'>${teachers[i].phone}</td>
                     <td style='padding: 20px;'>${teachers[i].city}</td>
-                    <td style='padding: 20px;'><button style='padding: 8px 25px; background-color: dodgerblue; color: white;
-                    border-radius: 5px; border: none; cursor: pointer;'">View Details</button></td>
                </tr>`
 
     tableBody.innerHTML += row;
@@ -37,11 +35,13 @@ let { data: classes, error3 } = await supabase
   .from('classroom')
   .select('*')
 
-const classOptions = document.querySelector('class');
+  // console.log(classes)
+
+const classOptions = document.querySelector('.class-list');
 for (var i in classes){
 
-  var row = `<option value='${classroom.id}'>  
-                  ${classroom.name}
+  var row = `<option value='${classes[i].id}'>  
+                  ${classes[i].name}
              </option>`
 
   classOptions.innerHTML += row;
@@ -63,7 +63,6 @@ $('.close-btn').click(() => {
 const form = document.querySelector('.t-form');
 const teachersBox = document.querySelector('.teachers-box');
 
-
 async function insertData() {
   const formData = new FormData(form);
 
@@ -76,14 +75,41 @@ async function insertData() {
     city: formData.get('city'),
     photo:formData.get('photo'),
     telephone: formData.get('telephone'),
+    password: formData.get('password'),
     class: formData.get('class')
   };
+
+// let userEmail = info.email;
+// let userPassword = info.password;
+
+  // Create authentication instance
+async function createUser(user, password) {
+  const { data, error } = await supabase.auth.admin.createUser({
+      email: info.email,
+      password: info.password,
+      email_confirm: true,
+  });
+  if(error){
+///There was an error
+console.error(error.message);
+return;
+}
+//get auth_id
+  const authID = data.user.id;
+  return authID;
+}
+
+   const throwUser = await createUser();
+   throwUser;
+  //  console.log(throwUser);
+
+  // const { data, error1 } = await supabase.auth.updateUser({password: 'new password'})
 
   const { data, error } = await supabase
       .from('teacher')
         .insert([
           { first_name: info.firstName , last_name: info.lastName, other_name: info.otherName, email: info.email, address: info.address,
-            city: info.city, school_id: 2, photo_url: info.photo, phone: info.telephone, class_id: 1}
+            city: info.city, auth_id: throwUser, school_id: 2, photo_url: info.photo, phone: info.telephone, class_id: 1}
       ])
 
   console.log(data)

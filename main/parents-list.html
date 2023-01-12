@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent List Sheet</title>
+    <link rel="stylesheet" href="grade.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Parent List</h1>
+        <br>
+        <h2 id="school-name"></h2>
+        <p style="color: #818181;">Terminal Report Sheet</p>
+        <img style="height: 20vh;" id="logo">
+        <br>
+        <br>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>Full name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                
+            </tbody>
+        </table>
+        <button onclick="window.print()" style="padding: 10px 40px;
+        background-color: dodgerblue; margin-bottom: 4rem;
+        color: white; margin-bottom: 4rem; border: none; border-radius: 5px;
+        cursor: pointer;">Print Grade</button>
+    </div>
+
+    <script
+	src="https://code.jquery.com/jquery-3.6.3.min.js"
+	integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+	crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script src="parent-list.js" type="module"></script>
+	<!-- <script src="script.js"></script> -->
+</body>
+</html>

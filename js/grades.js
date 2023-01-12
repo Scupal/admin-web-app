@@ -2,37 +2,29 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 // import { createClient } from '@supabase/supabase-js';
 
 // Create a single supabase client for interacting with your database
-const supabase = createClient('https://wvaxmbprbpvhulyzorsm.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind2YXhtYnByYnB2aHVseXpvcnNtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzE4NzE3NzgsImV4cCI6MTk4NzQ0Nzc3OH0.WQjjW0_dz5sojlbwNaPpDCeeKTEyNWlpMJaCHXRfE3M');
+const supabase = createClient('http://109.74.192.221:8000', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICAgInJvbGUiOiAic2VydmljZV9yb2xlIiwKICAgICJpc3MiOiAic3VwYWJhc2UiLAogICAgImlhdCI6IDE2NzIyNzIwMDAsCiAgICAiZXhwIjogMTgzMDAzODQwMAp9.ZVCUygy7EwO9z0QJy73nt7vxXLWSyahq_ot6dcZtgJM');
 
 // Sellect all Grades
 let { data: grades, error } = await supabase
   .from('grade')
-  .select('*')
+  .select('*, student(*), subject(*)')
+
 
 const tableBody = document.getElementById('table-body');
 const numGrades = document.getElementById('num-grades');
 
-// for (var i in grades){
+for(let i = 0; i < grades.length; i++){
+  var row = `<tr>
+                <td>${grades[i]["student"]["first_name"]} ${grades[i]["student"]["last_name"]}</td>
+                <td>${grades[i]["subject"]["name"]}</td>
+                <td>${grades[i].classwork}</td>
+                <td>${grades[i].homework}</td>
+                <td>${grades[i].exams}</td>
+                <td>${grades[i].midsem}</td>
+                <td><strong>${grades[i].homework + grades[i].classwork + grades[i].exams + grades[i].midsem}</strong></td>
+             <tr>`
 
-    var row = `<tr>  
-                    <td>Adel Arthur</td>
-                    <td>Class 1</td>
-                    <td>20</td>
-                    <td>20</td>
-                    <td>10</td>
-                    <td>20</td>
-                    <td>10</td>
-                    <td><strong>A</strong></td>
-               </tr>`
-
-    // tableBody.innerHTML += row;
-// }
-
-numGrades.innerHTML = 1;
-
-let downloadGrade = document.getElementById('download-grade');
-
-downloadGrade.onclick = () => {
-    alert("Download Report?");
+  tableBody.innerHTML += row;
 }
 
+numGrades.innerHTML = grades.length;

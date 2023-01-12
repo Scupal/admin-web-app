@@ -2,7 +2,7 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 // import { createClient } from '@supabase/supabase-js';
 
 // Create a single supabase client for interacting with your database
-const supabase = createClient('http://109.74.192.221:8000', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICAgInJvbGUiOiAiYW5vbiIsCiAgICAiaXNzIjogInN1cGFiYXNlIiwKICAgICJpYXQiOiAxNjcyMjcyMDAwLAogICAgImV4cCI6IDE4MzAwMzg0MDAKfQ.KY_w-s7ZPYvUjdKPFv2mFyXRccXH0NIEEyn-4_dWFV4');
+const supabase = createClient('http://109.74.192.221:8000', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICAgInJvbGUiOiAic2VydmljZV9yb2xlIiwKICAgICJpc3MiOiAic3VwYWJhc2UiLAogICAgImlhdCI6IDE2NzIyNzIwMDAsCiAgICAiZXhwIjogMTgzMDAzODQwMAp9.ZVCUygy7EwO9z0QJy73nt7vxXLWSyahq_ot6dcZtgJM');
 
 // Sellect Accepted Students
 let { data: accepted, error } = await supabase
@@ -54,12 +54,10 @@ for (var i in students){
   }
 
   var row =  `<tr>
+  <td style='padding: 20px;'>${students[i].id}</td>
   <td style='padding: 20px;'>${students[i].first_name + " " + students[i].last_name}</td>
   <td style='padding: 20px;'>${students[i].created_at}</td>
   <td style='padding: 20px;'>${STATUS}</td>
-  <td style='padding: 20px;'><button style='padding: 8px 25px; background-color: dodgerblue; color: white;
-  border-radius: 5px; border: none; cursor: pointer;'" class='view-btn'>View Details</button>
-  </td>
 </tr>`
 
   tableBody.innerHTML += row;
@@ -95,3 +93,28 @@ $(document).ready(function () {
 //        }
 //     })
 // })
+
+// Search by id
+
+// const searchForm = document.getElementById('search-form');
+
+// const searchFormDate = new FormData(searchForm);
+// const searchInfo = {
+//   id: searchFormDate.get('id'),
+// }
+
+// searchForm.addEventListener('submit', (event))
+
+// let { data: admission, erro4 } = await supabase
+//   .from('admission')
+//   .select('*')
+//   .eq('id', 2)
+
+//   console.log(erro4)
+
+// searchForm.addEventListener('submit', (event) => {
+//   event.preventDefault();
+//   let num = searchInfo.id;
+//   console.log(`Number: ${num}`);
+//   // alert(admission[0].first_name)
+// });

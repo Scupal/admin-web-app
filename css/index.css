@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+}
+
+#login-form{
+    padding: 2rem 4rem;
+    background-color: white;
+    margin: auto;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+#login-form form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#login-form form input,
+select{
+    padding: 8px 20px;
+    background-color: #f6f5ff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline-color: dodgerblue;
+    width: 100%;
+}
+
+.submit-btn{
+    background-color: dodgerblue !important;
+    color: white;   
+    cursor: pointer;
+}
+
+.submit-btn:hover{
+    background-color: rgb(16, 84, 151) !important;
+}
